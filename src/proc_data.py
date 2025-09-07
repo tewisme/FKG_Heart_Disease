@@ -5,6 +5,20 @@ import seaborn as sns
 df = pd.read_csv('../../data/Heart.csv')
 featureName = df.columns.tolist()
 
-for i in featureName:
-    print(i)
-    print(df.groupby('target')[i].describe())
+for i in range(len(featureName)-1):
+    dataF = df.copy()
+    plt.figure(figsize=(13,4))
+    plt.subplot(1,3,1)
+    sns.histplot(dataF[featureName[i]], bins=10, kde=True)
+    plt.title('Histplot diagram for ' + str(featureName[i]))
+    #---
+    plt.subplot(1,3,2)
+    sns.boxplot(x='target', y=featureName[i], data=dataF)
+    sns.stripplot(x='target', y=featureName[i], data=dataF, jitter=True, edgecolor='black')
+    plt.title('Boxplot for ' + str(featureName[i]))
+    #---
+    plt.subplot(1,3,3)
+    sns.violinplot(x='target', y=featureName[i], data=dataF)
+    sns.stripplot(x='target', y=featureName[i], data=dataF, jitter=True, edgecolor='black')
+    plt.title('Violinplot for ' + str(featureName[i]))
+    plt.show()
