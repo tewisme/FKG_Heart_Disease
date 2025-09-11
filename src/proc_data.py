@@ -6,7 +6,7 @@ import seaborn as sns
 def visualization(data):
     dataF = data.copy()
     featureName = dataF.columns.tolist()
-    for i in range(len(featureName)-1):
+    for i in range(1):
         plt.figure(figsize=(11,4))
         plt.subplot(1,3,1)
         sns.histplot(dataF[featureName[i]], bins=10, kde=True)
@@ -21,5 +21,4 @@ def visualization(data):
         sns.violinplot(x='target', y=featureName[i], data=dataF)
         sns.stripplot(x='target', y=featureName[i], data=dataF, jitter=True, edgecolor='black')
         plt.title('Violinplot for ' + str(featureName[i]))
-        plt.show()
-
+    plt.show()

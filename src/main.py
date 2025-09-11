@@ -1,10 +1,11 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import skfuzzy as fuzz
+import module
 import proc_data
-from skfuzzy import control as ctrl
 
 df = pd.read_csv('../../data/Heart.csv')
 
-proc_data.visualization(df)
+
+if __name__ == '__main__':
+	module.proc(df)
+	#proc_data.visualization(df)
