@@ -22,3 +22,16 @@ def visualization(data):
         sns.stripplot(x='target', y=featureName[i], data=dataF, jitter=True, edgecolor='black')
         plt.title('Violinplot for ' + str(featureName[i]))
     plt.show()
+
+def relationship(data):
+    dataF = data.copy()
+    featureName = dataF.columns.tolist()
+    for i in range(len(featureName)-1):
+        for j in range(i+1, len(featureName)-2):
+            sns.jointplot(x=featureName[i], y=featureName[j], data = dataF, size = 7, hue="target")
+            plt.title("Relationship between " + str(featureName[i]) + ' ' + str(featureName[j]))
+            #---
+            plt.show()
+
+def call(data):
+    relationship(data)
