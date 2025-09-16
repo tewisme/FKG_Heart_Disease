@@ -42,5 +42,5 @@ def heatmap(data):
     plt.title("Feature Correlation Heatmap")
     plt.show()
 def call(data):
-    #heatmap(data)
-    relationship(data)
+    heatmap(data)
+    #relationship(data)
