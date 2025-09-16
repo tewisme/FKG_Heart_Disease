@@ -25,13 +25,22 @@ def visualization(data):
 
 def relationship(data):
     dataF = data.copy()
-    featureName = dataF.columns.tolist()
+    dataF.hist(figsize=(12,8), bins=20)
+    plt.suptitle("histogram of Features")
+    plt.show()
+    featureName = ["chest pain type", "exercise angina", "oldpeak", "ST slope", "max heart rate"]
     for i in range(len(featureName)-1):
         for j in range(i+1, len(featureName)-2):
             sns.jointplot(x=featureName[i], y=featureName[j], data = dataF, size = 7, hue="target")
             plt.title("Relationship between " + str(featureName[i]) + ' ' + str(featureName[j]))
             #---
             plt.show()
-
+def heatmap(data):
+    dataF = data.copy()
+    plt.figure(figsize=(12,8))
+    sns.heatmap(dataF.corr(), annot=False, cmap="coolwarm")
+    plt.title("Feature Correlation Heatmap")
+    plt.show()
 def call(data):
+    #heatmap(data)
     relationship(data)
