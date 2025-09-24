@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from utils import module
-from utils import proc_data
+import module
+import proc_data
 
 df = pd.read_csv('../../data/Heart.csv')
 
